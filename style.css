@@ -14,20 +14,13 @@ body {
   font-family: "Raleway", sans-serif;
 }
 #container {
-  max-width: 300px;
-
-  margin: 0 auto;
-
-  margin-top: 20vh;
+  display: gird;
 }
 .card {
   padding: 16px 8px 8px 8px;
   background-color: white;
-
   border: 1px solid #bacdd8;
-
   padding: 8px;
-
   border-radius: 12px;
 }
 p {
