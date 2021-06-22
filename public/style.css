@@ -38,9 +38,12 @@ h1 {
   margin-right: auto;
   margin-top: 60px;
 }
+.card-div {
+  background-color: #15172b;
+}
 .card {
   padding: 16px 8px 8px 8px;
-  background-color: white;
+  background-color: #15172b;
   border: 1px solid #bacdd8;
   border-radius: 12px;
 }
