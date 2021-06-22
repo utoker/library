@@ -1,4 +1,3 @@
-
 let library = [];
 const bookContainer = document.querySelector("#container");
 const newBook = document.querySelector(`.new-book`);
