@@ -31,12 +31,25 @@ h1 {
 }
 #container {
   margin: 60px 120px 0 120px;
-  display: grid;
+  display: none;
   grid-template-columns: repeat(6, 260px);
   grid-template-rows: repeat(6, auto);
   grid-gap: 20px;
 }
+.storages {
+  display: flex;
+  justify-content: center;
+}
+.cloud-storage {
+  font-size: 32px;
+  margin: 64px 0px 0px 64px;
+}
+.local-storage {
+  font-size: 32px;
+  margin: 64px 64px 0px 0px;
+}
 .new-book {
+  display: none;
   font-size: 32px;
   margin-right: auto;
   margin-top: 60px;

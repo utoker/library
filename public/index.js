@@ -1,20 +1,27 @@
-let library = [];
-
+const localStorageEntryButton = document.querySelector(".local-storage");
+const cloudStorageEntryButton = document.querySelector(".cloud-storage");
+localStorageEntryButton.addEventListener(`click`, localentry);
+let l = JSON.parse(localStorage.getItem("library"));
 const bookContainer = document.querySelector("#container");
 const newBook = document.querySelector(`.new-book`);
 const bookForm = document.querySelector(`.form`);
 const submit = document.querySelector(`.submit`);
 newBook.addEventListener(`click`, newBookForm);
 submit.addEventListener(`click`, submitForm);
-
+function localentry() {
+  localStorageEntryButton.style.display = "none";
+  cloudStorageEntryButton.style.display = "none";
+  newBook.style.display = "block";
+  bookContainer.style.display = "grid";
+}
 function submitForm() {
   let a = new Book(
     document.querySelector("#form-title").value,
     document.querySelector("#form-author").value,
     document.querySelector("#form-pages").value
   );
-  library.push(a);
-  localStorage.setItem(`library`, JSON.stringify(library));
+  l.push(a);
+  localStorage.setItem(`library`, JSON.stringify(l));
 
   let cardDiv = document.createElement("div");
   cardDiv.classList.add("card-div");
@@ -52,8 +59,6 @@ function Book(title, author, pages) {
 }
 
 ///// LOCAL STORAGE //////////////////////////////////
-
-let l = JSON.parse(localStorage.getItem("library"));
 
 function generateLibrary() {
   for (let i = 0; i < l.length; i++) {
