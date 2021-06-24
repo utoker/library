@@ -1,3 +1,5 @@
+/////////////TO DO: ADD FORM RULES//////////////////
+
 const localStorageEntryButton = document.querySelector(".local-storage");
 const cloudStorageEntryButton = document.querySelector(".cloud-storage");
 localStorageEntryButton.addEventListener(`click`, localentry);
@@ -14,6 +16,25 @@ function localentry() {
   newBook.style.display = "block";
   bookContainer.style.display = "grid";
 }
+function newBookForm() {
+  bookForm.style.display = "block";
+  bookContainer.style.display = "none";
+  newBook.style.display = "none";
+}
+function Book(title, author, pages) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+}
+let test = new Book(`tt`, `kek`, 345);
+const db = firebase.firestore();
+let lib = db.collection("library");
+const { serverTimestamp } = firebase.firestore.FieldValue;
+lib.add({
+  createdAat: serverTimestamp(),
+});
+
+///// LOCAL STORAGE //////////////////////////////////
 function submitForm() {
   let a = new Book(
     document.querySelector("#form-title").value,
@@ -47,18 +68,6 @@ function submitForm() {
   bookContainer.style.display = "grid";
   newBook.style.display = "block";
 }
-function newBookForm() {
-  bookForm.style.display = "block";
-  bookContainer.style.display = "none";
-  newBook.style.display = "none";
-}
-function Book(title, author, pages) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-}
-
-///// LOCAL STORAGE //////////////////////////////////
 
 function generateLibrary() {
   for (let i = 0; i < l.length; i++) {
@@ -78,7 +87,7 @@ function generateLibrary() {
     cardDiv.appendChild(cardButton);
   }
 }
-generateLibrary();
+l === null ? (l = []) : generateLibrary();
 
 function deleteBook() {
   let b = this.parentElement.firstChild.textContent;
