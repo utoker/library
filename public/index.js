@@ -21,19 +21,19 @@ function newBookForm() {
   bookContainer.style.display = "none";
   newBook.style.display = "none";
 }
-function Book(title, author, pages) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
+class Book {
+  constructor(title, author, pages) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+  }
 }
-let test = new Book(`tt`, `kek`, 345);
 const db = firebase.firestore();
 let lib = db.collection("library");
 const { serverTimestamp } = firebase.firestore.FieldValue;
 lib.add({
   createdAat: serverTimestamp(),
 });
-
 ///// LOCAL STORAGE //////////////////////////////////
 function submitForm() {
   let a = new Book(
@@ -60,7 +60,6 @@ function submitForm() {
   cardButton.textContent = "Delete";
   cardButton.addEventListener(`click`, deleteBook);
   cardDiv.appendChild(cardButton);
-
   document.querySelector("#form-title").value = "";
   document.querySelector("#form-author").value = "";
   document.querySelector("#form-pages").value = "";
@@ -68,7 +67,6 @@ function submitForm() {
   bookContainer.style.display = "grid";
   newBook.style.display = "block";
 }
-
 function generateLibrary() {
   for (let i = 0; i < l.length; i++) {
     let cardDiv = document.createElement("div");
@@ -88,7 +86,6 @@ function generateLibrary() {
   }
 }
 l === null ? (l = []) : generateLibrary();
-
 function deleteBook() {
   let b = this.parentElement.firstChild.textContent;
 
